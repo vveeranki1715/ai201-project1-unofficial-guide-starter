@@ -18,3 +18,7 @@ chroma/
 
 # macOS
 .DS_Store
+
+# Generated pipeline artifacts
+processed/
+chunks.jsonl
