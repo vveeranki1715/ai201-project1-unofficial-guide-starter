@@ -63,10 +63,16 @@ to show subtopic coverage; the full set of 111 is enumerated in
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:** ~1,000 characters (≈ 220–250 tokens), split on natural
-boundaries (paragraph → sentence → hard word-cut), never mid-sentence.
+**Chunk size:** ~200 tokens, hard ceiling 256, measured with the embedding
+model's own tokenizer. Split on natural boundaries (paragraph → sentence → word
+window), never mid-sentence.
+> **Updated during implementation:** originally specified as ~1,000 characters.
+> Verifying against MiniLM's tokenizer showed clinical text tokenizes much denser
+> than ~4 chars/token (drug names → many subwords), so 800-char chunks could hit
+> 435 tokens and be truncated. Switched to a **token-aware** chunker so no chunk
+> exceeds the 256-token limit. See README → Spec Reflection.
 
-**Overlap:** ~150 characters (~15%), trimmed to start at a word boundary.
+**Overlap:** ~30 tokens (~15%), trimmed to start at a word boundary.
 
 **Reasoning:**
 My documents are **long-form expository textbook prose**, not short reviews. A
