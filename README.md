@@ -9,10 +9,16 @@
 
 ## Domain
 
-<!-- What topic or category of knowledge does your system cover?
-     Why is this knowledge valuable, and why is it hard to find through official channels?
-     Example: "Student reviews of CS professors at [university] — useful because official
-     course descriptions don't reflect teaching style, exam difficulty, or workload." -->
+**Clinical & health-science study knowledge — an unofficial study guide for
+nursing and pre-health students.** The system makes four dense, open-access
+medical reference texts (microbiology, pharmacology for nurses, surgical care,
+and patient safety / clinical-risk management) searchable in plain language and
+returns cited, grounded answers. This knowledge is public but practically hard
+to find: the answer a student needs is buried across ~3,500 pages of four
+separate textbooks with no semantic search, so answering a focused clinical
+question normally means already knowing which book, chapter, and page to open.
+Official course materials are built for linear reading, not for asking a
+specific question and getting a sourced answer back.
 
 ---
 
@@ -22,18 +28,22 @@
      Be specific: include URLs, subreddit names, forum thread titles, or file names.
      Aim for variety — sources that together cover different subtopics or perspectives. -->
 
+Four source textbooks (in `documents/`) are split by the ingestion pipeline into
+**111 chapter/section-level documents** (indexed in `processed/manifest.json`).
+The table lists the source texts plus representative chapters showing coverage.
+
 | # | Source | Type | URL or file path |
 |---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | OpenStax *Microbiology* (26 chapters) | PDF textbook | `documents/OpenStax-Microbiology.pdf` · https://openstax.org/details/books/microbiology |
+| 2 | OpenStax *Pharmacology for Nurses* (40 chapters) | PDF textbook | `documents/OpenStax-Pharmacology-for-Nurses.pdf` · https://openstax.org/details/books/pharmacology-for-nurses |
+| 3 | WHO *Surgical Care at the District Hospital* | PDF (WHO) | `documents/surgical-care-at-the-district-hospital-world-health-organization-618.pdf` · https://www.who.int/publications/i/item/9241545755 |
+| 4 | *Textbook of Patient Safety and Clinical Risk Management* (34 chapters) | PDF (Springer, open access) | `documents/textbook-of-patient-safety-...-621.pdf` · https://link.springer.com/book/10.1007/978-3-030-59403-9 |
+| 5 | Microbiology Ch. 14 — Antimicrobial Drugs | Chapter doc | `processed/doc-014-*.json` |
+| 6 | Microbiology Ch. 26 — Nervous System Infections | Chapter doc | `processed/doc-026-*.json` |
+| 7 | Pharmacology Ch. 20 — Anticoagulant/Antiplatelet Drugs | Chapter doc | `processed/doc-046-*.json` |
+| 8 | Pharmacology Ch. 11 — Parkinson's Disease Drugs | Chapter doc | `processed/doc-037-*.json` |
+| 9 | Patient Safety Ch. 3 — Human Error and Patient Safety | Chapter doc | `processed/doc-069-*.json` |
+| 10 | WHO Surgical Care — surgical/sterile-technique sections | Section docs | `processed/doc-101..111-*.json` |
 
 ---
 
